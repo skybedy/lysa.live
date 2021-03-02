@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="cs" dir="ltr">
+<head>
+<title>Výsledkový systém a čipová časomíra TimeChip | Závody 2021</title>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="sport timing,čipová časomíra, měření závodů">
+<meta name="description" content="Výsledkový systém a čipová časomíra">
+<meta name="author" content="TimeChip">
+<meta name="Robots" content="index,follow" />
+<link rel="stylesheet" href="/static/css/fontello.css" media="screen" />
+<link rel="stylesheet" href="/static/css/bootstrap.css" media="screen" />
+<link rel="stylesheet" href="/static/css/bootstrap-table.min.css" media="screen" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:301,400,700' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<div class="wrapper">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><img src="/static/img/logo.png" alt="TimeChip" width="146" height="34" /></a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Závody <span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a href="/zavody/2021">2021</a></li>
+                        <li><a href="/zavody/2020">2020</a></li>
+                        <li><a href="/zavody/2019">2019</a></li>
+                        <li><a href="/zavody/2019">2019</a></li>
+                        <li><a href="/zavody/2018">2018</a></li>
+                        <li><a href="/zavody/2017">2017</a></li>
+                        <li><a href="/zavody/2016">2016</a></li>
+                        <li><a href="/zavody/2015">2015</a></li>
+                        <li><a href="/zavody/2014">2014</a></li>
+                        <li><a href="/zavody/2013">2013</a></li>
+                        <li><a href="/zavody/2012">2012</a></li>
+                        <li><a href="/zavody/2011">2011</a></li>
+                        <li><a href="/zavody/2010">2010</a></li>
+                        <li><a href="/zavody/2009">2009</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Výsledky <span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a href="/vysledky/2021">2021
+                        
+                        
+                        </a></li>
+                        <li><a href="/vysledky/2020">2020</a></li>
+                        <li><a href="/vysledky/2019">2019</a></li>
+                        <li><a href="/vysledky/2018">2018</a></li>
+                        <li><a href="/vysledky/2017">2017</a></li>
+                        <li><a href="/vysledky/2016">2016</a></li>
+                        <li><a href="/vysledky/2015">2015</a></li>
+                        <li><a href="/vysledky/2014">2014</a></li>
+                    </ul>
+                </li>
+                <li><a target="_blank" href="http://entry.timechip.cz">Přihlášky</a></li>
+                <li><a href="/kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="underbar">
+    <div class="container">
+        <h1> Závody 2021</h1>
+    </div>
+</div>
+
+
+<div class="container content">
+    
+    <div id="app">
+        <div>${info}</div>
+        <table class="table table-striped table-hover">
+            <tr v-for="todo in info">
+              <td>${todo.nazev_zavodu}</td>
+              <td>${todo.misto_zavodu}</td>
+              <td v-if="todo.den_zavodu_konec">${todo.den_zavodu}-${todo.den_zavodu_konec}</td>
+              <td v-else>${todo.datum_zavodu}</td>
+            </tr>
+        </table>
+
+
+    </div>
+
+<div class="container">
+    <div class="footer">
+        TimeChip.cz 2004-2020
+    </div>
+</div>
+</div> 
+
+<script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.twitter.autolink.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/static/js/messages_cs.min.js"></script>
+<script type="text/javascript" src="/static/js/underscore.js"></script>
+<script type="text/javascript" src="/static/js/backbone.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript" src="/static/js/default.js"></script>
+<script type="text/javascript" src="/static/js/vuetest.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".twee").twitter_autolink();
+
+        $('.bxslider').bxSlider({
+            auto:true,
+            mode:'fade',
+            pager:false,
+            controls:false,
+            speed:5000,
+            useCSS:false,
+            randomStart:true
+        });
+
+
+        $('form').validate({
+            rules: {
+                jmeno: {
+                    minlength: 2,
+                    maxlength: 50,
+                    required: true
+                },
+                telefon: {
+                    minlength: 9,
+                    maxlength: 30,
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    minlength: 5,
+                    maxlength: 100
+                },
+                zprava: {
+                    minlength: 5,
+                    required: true
+                }
+            },
+
+
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function(error, element) {
+                if(element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+    })
+</script>
+<script>
+    $.fn.serializeObject = function() {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
+
+var Contact = Backbone.Model.extend({
+   url: '/kontakt/kontaktni-formular'
+});
+
+var FormContact = Backbone.View.extend({
+    el: '#form-contact-wrapper',
+    events : {
+        'submit #form-contact' : 'formContactHandler'
+    },
+    formContactHandler : function(ev){
+        var messageDetails = $(ev.currentTarget).serializeObject();
+
+        var self = this;
+        this.model.fetch({data:messageDetails}).done(function(res){
+            self.render(res);
+        });
+        ev.preventDefault();
+    },
+
+    render: function(res){
+        this.$el.html('<p>'+res.zprava+'</p>');
+    }
+
+});
+
+
+var contact = new Contact();
+var formContact = new FormContact({
+    model: contact
+});
+Backbone.history.start();
+</script>
+</body>
+</html>
